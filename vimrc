@@ -63,11 +63,9 @@ nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 "CtrlP key
 nmap <C-b> :CtrlPBuffer<CR>
+nmap <silent> <leader>m :CtrlPMRU<CR>
 
-" SingleCompile Key
-nmap <C-c> :SCCompileRun<CR>
-
-nmap <C-o> :EasyMotion<CR>
+nmap <C-c> :EasyMotion<CR>
 
 " Tagbar/IndentGuides Toggle keys
 nmap <C-z> :TagbarToggle<CR>
