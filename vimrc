@@ -64,6 +64,9 @@ hi link EasyMotionMoveHL  IncSearch
 autocmd CursorMovedI *  if pumvisible() == 0|silent! pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
+" css-color
+let g:cssColorVimDoNotMessMyUpdatetime = 1
+
 " Vim Show indents
 let g:indent_guides_auto_colors=0
 let g:indent_guides_guide_size=1
@@ -106,15 +109,34 @@ nmap <leader>gc :Gcommit<CR>
 nmap <leader>grm :Gremove<CR>
 nmap <leader>gb :Gblame<CR>
 
+" Git-gutter
+nmap <leader>gt :GitGutterToggle<CR>
+nmap <leader>gtl :GitGutterLineHighlightsToggle<CR>
+nmap ]h <plug>GitGutterNextHunk<CR>
+nmap [h <plug>GitGutterPrevHunk<CR>
+hi SignColumn           ctermbg=none
+hi GitGutterAdd         ctermfg=113 ctermbg=none	cterm=none	guifg=#95e454	gui=italic
+hi GitGutterDelete	    ctermfg=203                             guifg=#ff5f55
+hi GitGutterChange      ctermfg=111	ctermbg=none	cterm=none  guifg=#88b8f6
+
+hi GitGutterAddLine	                ctermbg=235		cterm=none	guibg=#242424	gui=none
+hi GitGutterDeleteLine	            ctermbg=203		cterm=none	guibg=#ff5f55	gui=none
+hi GitGutterChangeLine	            ctermbg=235		cterm=none	guibg=#242424	gui=none
+hi GitGutterChangeDeleteLine	    ctermbg=137		cterm=none  guibg=#e5786d
+
+let g:gitgutter_highlight_lines = 0
+
+
+"============================================
+"               AUTOCOMMANDS
+"============================================
+
 " Prevent UltiSnips from stealing ctrl-k.
 augroup VimStartup
 autocmd!
 autocmd VimEnter * sil! iunmap <c-k>
 augroup end"
 
-"============================================
-"               AUTOCOMMANDS
-"============================================
 
 autocmd FileType html set ft=htmldjango
 autocmd FileType html set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
