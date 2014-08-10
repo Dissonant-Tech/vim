@@ -7,6 +7,7 @@ execute pathogen#infect()
 "============================================
 
 let mapleader="," " Set leader key to comma
+set t_Co=256
 
 set nocompatible        " Set fist, as this option affects others
 set tabstop=4
@@ -49,14 +50,16 @@ set smartcase
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_incsearch = 1
+
 " These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
 " Without these mappings, `n` & `N` works fine. (These mappings just provide
 " different highlight method and have some other features )
-"map  n <Plug>(easymotion-next)
-"map  N <Plug>(easymotion-prev)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
 
-let g:EasyMotion_smartcase = 1
-let g:EasyMotion_incsearch = 1
+hi link EasyMotionMoveHL  IncSearch
 
 " Close preview windows
 autocmd CursorMovedI *  if pumvisible() == 0|silent! pclose|endif
@@ -202,9 +205,3 @@ endfunction
 autocmd CursorMoved * call ToggleHighlight()
 map <C-f> :call ToggleHighlight(1)<CR>
 
-
-hi link EasyMotionTarget ErrorMsg
-hi link EasyMotionShade  Comment
-
-hi link EasyMotionTarget2First MatchParen
-hi link EasyMotionTarget2Second MatchParen
