@@ -7,7 +7,6 @@ execute pathogen#infect()
 "============================================
 
 let mapleader="," " Set leader key to comma
-set t_Co=256
 
 set nocompatible        " Set fist, as this option affects others
 set tabstop=4
@@ -97,6 +96,15 @@ let g:syntastic_javascript_checkers = ['jshint']
 "Tagbar setup
 let g:tagbar_width = 28
 
+" Fugitive leader/command shortcuts
+nmap <leader>gl :Git log --pretty="format:\%Cgreen\%h\%Creset \%an - \%s" --graph<CR>
+nmap <leader>gll :Git log<CR>
+nmap <leader>gst :Gstatus<CR>
+nmap <leader>gaa :Git add --all .<CR>
+nmap <leader>ga :Git add .<CR>
+nmap <leader>gc :Gcommit<CR>
+nmap <leader>grm :Gremove<CR>
+nmap <leader>gb :Gblame<CR>
 
 " Prevent UltiSnips from stealing ctrl-k.
 augroup VimStartup
