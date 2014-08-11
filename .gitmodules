@@ -49,3 +49,6 @@
 [submodule "bundle/vim-autoread"]
 	path = bundle/vim-autoread
 	url = https://github.com/djoshea/vim-autoread
+[submodule "bundle/xmledit"]
+	path = bundle/xmledit
+	url = https://github.com/sukima/xmledit
