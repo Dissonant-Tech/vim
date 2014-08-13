@@ -126,6 +126,10 @@ hi GitGutterChangeDeleteLine	    ctermbg=137		cterm=none  guibg=#e5786d
 
 let g:gitgutter_highlight_lines = 0
 
+" Persisten undo
+set undodir=~/.vim/undo
+set undofile
+
 
 "============================================
 "               AUTOCOMMANDS
