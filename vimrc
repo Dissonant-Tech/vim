@@ -167,6 +167,7 @@ let g:airline_theme = "luna"
 " YCM setup
 let g:ycm_collect_identifiers_from_tags_files = 0
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
 
 " UltiSnips setup
 let g:UltiSnipsExpandTrigger = "<tab>"
