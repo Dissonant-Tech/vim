@@ -154,6 +154,7 @@ set wildignore+=*.so,*.swp,*.zip     " MacOSX/Linux
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn|)$',
   \ 'bower_dir': '\v[\/](bower_components)$',
+  \ 'sources_dir': '\v[\/](sources)$',
   \ 'file': '\v\.(exe|so|dll)$',
   \ }
 
