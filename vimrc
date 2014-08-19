@@ -153,7 +153,7 @@ autocmd FileType htmldjango let g:html_indent_inctags = "html,body,head,tbody"
 "============================================
 "                 CTRLP
 "============================================
-set wildignore+=*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*.so,*.swp,*.zip,bower_components/*     " MacOSX/Linux
 
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn|)$',
