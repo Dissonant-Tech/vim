@@ -78,9 +78,12 @@ hi IndentGuidesEven ctermbg=black
 " Delete trailing spaces
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
+" Start eclim daemon
+nmap <silent> <leader>e :!/usr/share/eclipse/eclimd & <CR>
+
 "CtrlP key
 nmap <C-b> :CtrlPBuffer<CR>
-nmap <silent> <leader>m :CtrlPMRU<CR>
+nmap <C-m> :CtrlPMRU<CR>
 
 nmap <C-c> :EasyMotion<CR>
 
@@ -108,6 +111,11 @@ nmap <leader>ga :Git add .<CR>
 nmap <leader>gc :Gcommit<CR>
 nmap <leader>grm :Gremove<CR>
 nmap <leader>gb :Gblame<CR>
+nmap <leader>gp :Gpush<CR>
+
+nmap <leader>gpp :Gpush
+nmap <leader>gm :Gmerge
+nmap <leader>gco :Git checkout
 
 " Git-gutter
 nmap <leader>gt :GitGutterToggle<CR>
@@ -125,6 +133,12 @@ hi GitGutterChangeLine	            ctermbg=235		cterm=none	guibg=#242424	gui=non
 hi GitGutterChangeDeleteLine	    ctermbg=137		cterm=none  guibg=#e5786d
 
 let g:gitgutter_highlight_lines = 0
+
+" Mark highlights
+hi MarkWord1    ctermbg=113 	guibg=#95e454    ctermfg=232 	guifg=#000000
+hi MarkWord2	ctermbg=203     guibg=#ff5f55    ctermfg=232    guifg=#000000
+hi MarkWord3    ctermbg=111		guibg=#88b8f6    ctermfg=232	guifg=#000000
+hi MarkWord4	ctermbg=137	    guibg=#e5786d    ctermfg=232    guifg=#000000
 
 " Persisten undo
 set undodir=~/.vim/undo
@@ -248,3 +262,7 @@ map <C-f> :call ToggleHighlight(1)<CR>
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
             \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
             \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+" Search and Replace function
+function! FindDestroy()
+endfunction
