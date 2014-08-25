@@ -56,13 +56,16 @@ let g:EasyMotion_incsearch = 1
 " Without these mappings, `n` & `N` works fine. (These mappings just provide
 " different highlight method and have some other features )
 map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
+map  m <Plug>(easymotion-prev)
 
 hi link EasyMotionMoveHL  IncSearch
 
 " Close preview windows
 autocmd CursorMovedI *  if pumvisible() == 0|silent! pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|silent! pclose|endif
+
+" Disable eclim when vim starts (I prefer to only use it when needed)
+autocmd VimEnter * :EclimDisable
 
 " css-color
 let g:cssColorVimDoNotMessMyUpdatetime = 1
