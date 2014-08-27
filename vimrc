@@ -60,13 +60,6 @@ map  m <Plug>(easymotion-prev)
 
 hi link EasyMotionMoveHL  IncSearch
 
-" Close preview windows
-autocmd CursorMovedI *  if pumvisible() == 0|silent! pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|silent! pclose|endif
-
-" Disable eclim when vim starts (I prefer to only use it when needed)
-autocmd VimEnter * :EclimDisable
-
 " css-color
 let g:cssColorVimDoNotMessMyUpdatetime = 1
 
@@ -85,8 +78,8 @@ nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 nmap <silent> <leader>e :!/usr/share/eclipse/eclimd & <CR>
 
 "CtrlP key
-nmap <C-b> :CtrlPBuffer<CR>
-nmap <C-m> :CtrlPMRU<CR>
+nmap <leader><leader>b :CtrlPBuffer<CR>
+nmap <leader><leader>m :CtrlPMRU<CR>
 
 nmap <C-c> :EasyMotion<CR>
 
@@ -96,7 +89,7 @@ nmap <C-a> :IndentGuidesToggle<CR>
 
 " NERDTree
 let g:NERDTreeWinSize=24
-let NERDTreeIgnore = ['\.pyc$', '\.class$', '\.git$', '\.o$']
+let NERDTreeIgnore = ['\.pyc$', '\.class$', '\.git$', '\.o$', '\.la$']
 
 "Syntastic setup
 let g:syntastic_check_on_open = 1
@@ -108,6 +101,7 @@ let g:tagbar_width = 28
 " Fugitive leader/command shortcuts
 nmap <leader>gl :Git log --pretty="format:\%Cgreen\%h\%Creset \%an - \%s" --graph<CR>
 nmap <leader>gll :Git log<CR>
+nmap <leader>gd :Gdiff<CR>
 nmap <leader>gst :Gstatus<CR>
 nmap <leader>gaa :Git add --all .<CR>
 nmap <leader>ga :Git add .<CR>
@@ -158,6 +152,12 @@ autocmd!
 autocmd VimEnter * sil! iunmap <c-k>
 augroup end"
 
+" Close preview windows
+autocmd CursorMovedI *  if pumvisible() == 0|silent! pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|silent! pclose|endif
+
+" Disable eclim when vim starts (I prefer to only use it when needed)
+autocmd VimEnter * :EclimDisable
 
 autocmd FileType html set ft=htmldjango
 autocmd FileType html set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
