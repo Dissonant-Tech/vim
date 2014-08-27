@@ -59,8 +59,8 @@ hi IncSearch					ctermbg=92		cterm=bold						guibg=#8700d7
 "hi Question
 "hi Scrollbar
 "hi SignColumn
-"hi SpellBad
-hi SpellCap						ctermbg=92		cterm=none						guibg=#8700d7	gui=none
+hi SpellCap						ctermbg=173										guibg=#e5786d	gui=none
+hi SpellBad						ctermbg=203		cterm=none						guibg=#ff5f55	gui=none
 "hi SpellLocal
 "hi SpellRare
 "hi TabLine
