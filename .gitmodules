@@ -55,15 +55,6 @@
 [submodule "bundle/xterm-color-table"]
 	path = bundle/xterm-color-table
 	url = https://github.com/guns/xterm-color-table.vim
-[submodule "bundle/browserlink"]
-	path = bundle/browserlink
-	url = https://github.com/jaxbot/browserlink.vim
 [submodule "bundle/DirDiff"]
 	path = bundle/DirDiff
 	url = https://github.com/vim-scripts/DirDiff.vim
-[submodule "bundle/semantic-highlight"]
-	path = bundle/semantic-highlight
-	url = https://github.com/jaxbot/semantic-highlight.vim
-[submodule "bundle/vim-searchdestroy"]
-	path = bundle/vim-searchdestroy
-	url = git@github.com:Dissonant-Tech/vim-searchdestroy.git
