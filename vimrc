@@ -6,8 +6,6 @@ execute pathogen#infect()
 "                GENERAL
 "============================================
 
-let mapleader="," " Set leader key to comma
-
 set nocompatible        " Set fist, as this option affects others
 set tabstop=4
 set shiftwidth=4
@@ -33,6 +31,10 @@ nmap <silent> <leader>so :so $MYVIMRC<CR>
 
 " Remove need for Shift to type commands
 nnoremap ; :
+nnoremap ;; ;
+nnoremap ,, ,
+
+noremap <M-q> <ESC>
 
 " Color settings
 syntax on
@@ -55,8 +57,8 @@ let g:EasyMotion_incsearch = 1
 " These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
 " Without these mappings, `n` & `N` works fine. (These mappings just provide
 " different highlight method and have some other features )
-map  n <Plug>(easymotion-next)
-map  m <Plug>(easymotion-prev)
+map  m <Plug>(easymotion-next)
+map  M <Plug>(easymotion-prev)
 
 hi link EasyMotionMoveHL  IncSearch
 
@@ -78,14 +80,14 @@ nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 nmap <silent> <leader>e :!/usr/share/eclipse/eclimd & <CR>
 
 "CtrlP key
-nmap <leader><leader>b :CtrlPBuffer<CR>
-nmap <leader><leader>m :CtrlPMRU<CR>
+nmap <leader>b :CtrlPBuffer<CR>
+nmap <leader>m :CtrlPMRU<CR>
 
 nmap <C-c> :EasyMotion<CR>
 
 " Tagbar/IndentGuides Toggle keys
-nmap <C-z> :TagbarToggle<CR>
-nmap <C-a> :IndentGuidesToggle<CR>
+nmap <leader>a :TagbarToggle<CR>
+nmap <leader>z :IndentGuidesToggle<CR>
 
 " NERDTree
 let g:NERDTreeWinSize=24
@@ -97,6 +99,18 @@ let g:syntastic_javascript_checkers = ['jshint']
 
 "Tagbar setup
 let g:tagbar_width = 28
+
+"Unite setup
+nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=buffer  -start-insert file<cr>
+nnoremap <leader>p :Unite file_rec/async<cr>
+nnoremap <space>/ :Unite grep:.<cr>
+nnoremap <space>s :Unite -quick-match -start-insert buffer<cr>
+
+"VimShell setup
+let g:vimshell_prompt_expr =
+\ 'escape(fnamemodify(getcwd(), ":~").">", "\\[]()?! ")." "'
+let g:vimshell_prompt_pattern = '^\%(\f\|\\.\)\+> '
+
 
 " Fugitive leader/command shortcuts
 nmap <leader>gl :Git log --pretty="format:\%Cgreen\%h\%Creset \%an - \%s" --graph<CR>
@@ -131,7 +145,10 @@ hi GitGutterChangeDeleteLine	    ctermbg=137		cterm=none  guibg=#e5786d
 
 let g:gitgutter_highlight_lines = 0
 
-" Mark highlights
+" Mark/InterestingWords highlights
+let g:interestingWordsGUIColors = ['#95e454', '#ff5ff5', '#88b8f6', '#e5786d']
+let g:interestingWordsTermColors = ['113', '203', '111', '137']
+
 hi MarkWord1    ctermbg=113 	guibg=#95e454    ctermfg=232 	guifg=#000000
 hi MarkWord2	ctermbg=203     guibg=#ff5f55    ctermfg=232    guifg=#000000
 hi MarkWord3    ctermbg=111		guibg=#88b8f6    ctermfg=232	guifg=#000000

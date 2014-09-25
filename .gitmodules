@@ -58,3 +58,18 @@
 [submodule "bundle/DirDiff"]
 	path = bundle/DirDiff
 	url = https://github.com/vim-scripts/DirDiff.vim
+[submodule "bundle/vim-interestingwords"]
+	path = bundle/vim-interestingwords
+	url = https://github.com/vasconcelloslf/vim-interestingwords
+[submodule "bundle/vim-searchdestroy"]
+	path = bundle/vim-searchdestroy
+	url = https://github.com/Dissonant-Tech/vim-searchdestroy
+[submodule "bundle/unite"]
+	path = bundle/unite
+	url = https://github.com/Shougo/unite.vim
+[submodule "bundle/vimproc"]
+	path = bundle/vimproc
+	url = https://github.com/Shougo/vimproc.vim
+[submodule "bundle/vimshell"]
+	path = bundle/vimshell
+	url = https://github.com/Shougo/vimshell.vim
