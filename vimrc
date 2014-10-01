@@ -100,12 +100,6 @@ let g:syntastic_javascript_checkers = ['jshint']
 "Tagbar setup
 let g:tagbar_width = 28
 
-"Unite setup
-nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=buffer  -start-insert file<cr>
-nnoremap <leader>p :Unite file_rec/async<cr>
-nnoremap <space>/ :Unite grep:.<cr>
-nnoremap <space>s :Unite -quick-match -start-insert buffer<cr>
-
 "VimShell setup
 let g:vimshell_prompt_expr =
 \ 'escape(fnamemodify(getcwd(), ":~").">", "\\[]()?! ")." "'
@@ -158,6 +152,8 @@ hi MarkWord4	ctermbg=137	    guibg=#e5786d    ctermfg=232    guifg=#000000
 set undodir=~/.vim/undo
 set undofile
 
+"Eclim
+let g:EclimCompletionMethod = 'omnifunc'
 
 "============================================
 "               AUTOCOMMANDS
@@ -169,12 +165,11 @@ autocmd!
 autocmd VimEnter * sil! iunmap <c-k>
 augroup end"
 
+autocmd VimEnter * :EclimDisable
+
 " Close preview windows
 autocmd CursorMovedI *  if pumvisible() == 0|silent! pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|silent! pclose|endif
-
-" Disable eclim when vim starts (I prefer to only use it when needed)
-autocmd VimEnter * :EclimDisable
 
 autocmd FileType html set ft=htmldjango
 autocmd FileType html set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
@@ -187,7 +182,7 @@ autocmd FileType htmldjango let g:html_indent_inctags = "html,body,head,tbody"
 "============================================
 "                 CTRLP
 "============================================
-set wildignore+=*.so,*.swp,*.zip,bower_components/*     " MacOSX/Linux
+set wildignore+=*.so,*.swp,*.zip,bower_components/*,*.class     " MacOSX/Linux
 
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn|)$',
@@ -196,14 +191,37 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll)$',
   \ }
 
+"Unite setup
+nnoremap <C-p> :<C-u>Unite -no-split -buffer-name=buffer  -start-insert file<cr>
+nnoremap <leader>p :Unite file_rec/async -start-insert<cr>
+nnoremap <space>/ :Unite grep:.<cr>
+nnoremap <space>s :Unite -quick-match -start-insert buffer<cr>
+
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
+
+" Set up some custom ignores
+call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
+      \ 'ignore_pattern', join([
+      \ '\.git/',
+      \ 'git5/.*/review/',
+      \ 'google/obj/',
+      \ 'tmp/',
+      \ '.sass-cache',
+      \ 'node_modules/',
+      \ 'bower_components/',
+      \ 'dist/',
+      \ '.git5_specs/',
+      \ '.pyc',
+      \ '.class',
+      \ 'build/intermediates/',
+      \ ], '\|'))
+
 " Vim-airline
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = "luna"
-
-" eclim setup
-let g:EclimCompletionMethod = 'omnifunc'
 
 " YCM setup
 let g:ycm_collect_identifiers_from_tags_files = 0
