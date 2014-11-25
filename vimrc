@@ -1,5 +1,5 @@
 " Load Plugins
-execute pathogen#infect()
+
 
 
 "============================================
@@ -14,6 +14,7 @@ set expandtab
 set hidden              " Hide, not Close buffers
 set nu
 set number              " Show line numbers
+set splitright          " Vertical Splits open on the right
 set pastetoggle=<F2>    " Paste code without vim auto indenting it
 set nuw=1               " Make numberline as small as possible
 set autoindent
@@ -29,12 +30,15 @@ set shortmess+=I        " Remove intro text
 " Sources vimrc, useful when editing vimrc settings
 nmap <silent> <leader>so :so $MYVIMRC<CR>
 
-" Remove need for Shift to type commands
-nnoremap ; :
-nnoremap ;; ;
-nnoremap ,, ,
-
 noremap <M-q> <ESC>
+nnoremap Q <nop>
+
+" Persisten undo
+set undodir=~/.vim/undo
+set undofile
+" Move vimfiles to their own directory
+set backupdir=~/.vim/backup
+set directory=~/.vim/swap
 
 " Color settings
 syntax on
@@ -47,6 +51,7 @@ colorscheme wombat256mod
 " Search options
 set incsearch
 set smartcase
+
 " Use EasyMotion for search, overides above settings
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
@@ -148,10 +153,6 @@ hi MarkWord2	ctermbg=203     guibg=#ff5f55    ctermfg=232    guifg=#000000
 hi MarkWord3    ctermbg=111		guibg=#88b8f6    ctermfg=232	guifg=#000000
 hi MarkWord4	ctermbg=137	    guibg=#e5786d    ctermfg=232    guifg=#000000
 
-" Persisten undo
-set undodir=~/.vim/undo
-set undofile
-
 "Eclim
 let g:EclimCompletionMethod = 'omnifunc'
 
@@ -179,31 +180,38 @@ autocmd FileType htmldjango set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType html let g:html_indent_inctags = "html,body,head,tbody"
 autocmd FileType htmldjango let g:html_indent_inctags = "html,body,head,tbody"
 
-"============================================
-"                 CTRLP
-"============================================
-set wildignore+=*.so,*.swp,*.zip,bower_components/*,*.class     " MacOSX/Linux
+autocmd! BufRead,BufNewFile,BufEnter *.{c,cpp,h,java,javascript} call CSyntaxAfter()
 
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn|)$',
-  \ 'bower_dir': '\v[\/](bower_components)$',
-  \ 'sources_dir': '\v[\/](sources)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ }
+"============================================
+"                 UNITE
+"============================================
 
 "Unite setup
-nnoremap <C-p> :<C-u>Unite -no-split -buffer-name=buffer  -start-insert file<cr>
-nnoremap <leader>p :Unite file_rec/async -start-insert<cr>
+nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=buffer file<cr>
+nnoremap <C-p> :Unite file_rec/async -start-insert<cr>
 nnoremap <space>/ :Unite grep:.<cr>
 nnoremap <space>s :Unite -quick-match -start-insert buffer<cr>
+nnoremap <space>b :Unite -start-insert buffer<cr>
+nnoremap <space>f :VimFiler -buffer-name=explorer 
+            \-split -simple -winwidth=30 -toggle -no-quit<cr>
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
+
+call unite#custom#profile('default', 'context', {
+        \   'direction': 'topleft',
+        \   'winheight': 18,
+        \   'prompt': '» ',
+        \   'marked_icon': '⚲',
+        \   'smartcase': 1,
+        \})
 
 " Set up some custom ignores
 call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ 'ignore_pattern', join([
       \ '\.git/',
+      \ '\.gradle/',
+      \ '\.idea/',
       \ 'git5/.*/review/',
       \ 'google/obj/',
       \ 'tmp/',
@@ -301,6 +309,10 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
             \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
             \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-" Search and Replace function
-function! FindDestroy()
+" Enable and Ping eclim
+function! StartEclim()
+    execute "EclimEnable"
+    execute "PingEclim"
 endfunction
+
+command StartEclim call StartEclim()

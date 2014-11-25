@@ -86,6 +86,17 @@ hi String		ctermfg=113		cterm=none		guifg=#95e454	gui=italic
 hi Comment		ctermfg=246		cterm=none		guifg=#9c998e	gui=italic
 hi Todo			ctermfg=101		cterm=none		guifg=#857b6f	gui=italic
 
+hi Class		ctermfg=203		cterm=none		guifg=#e5786d
+
+hi! link Field Normal
+hi! link EnumerationValue Normal
+hi! link Field Normal
+hi! link EnumeratorName Normal
+hi! link Interface Normal
+hi! link LocalVariable Normal
+hi! link Method Normal
+hi! link Package Normal
+
 
 " Links
 hi! link FoldColumn		Folded
