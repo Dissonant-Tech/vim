@@ -1,6 +1,65 @@
 " Load Plugins
+call plug#begin('~/.vim/plugged')
 
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --omnisharp-completer' }
+
+Plug 'junegunn/vim-github-dashboard'
+
+Plug 'Shougo/unite.vim'
+
+Plug 'jiangmiao/auto-pairs'
+
+Plug 'vim-scripts/cSyntaxAfter'
+
+Plug 'sjl/gundo.vim'
+
+Plug 'gorkunov/smartpairs.vim'
+
+Plug 'scrooloose/syntastic'
+
+Plug 'majutsushi/tagbar'
+
+Plug 'vim-scripts/TagHighlight'
+
+Plug 'SirVer/ultisnips'
+
+Plug 'Shougo/unite-session'
+
+Plug 'bling/vim-airline'
+
+Plug 'djoshea/vim-autoread'
+
+Plug 'gorodinskiy/vim-coloresque'
+
+Plug 'Lokaltog/vim-easymotion'
+
+Plug 'Shougo/vimfiler.vim'
+
+Plug 'tpope/vim-fugitive'
+
+Plug 'airblade/vim-gitgutter'
+
+Plug 'nathanaelkane/vim-indent-guides'
+
+Plug 'terryma/vim-multiple-cursors'
+
+Plug 'Shougo/vimproc.vim'
+
+Plug 'Dissonant-Tech/vim-searchdestroy'
+
+Plug 'Shougo/vimshell.vim'
+
+Plug 'honza/vim-snippets'
+
+Plug 'sukima/xmledit'
+
+Plug 'guns/xterm-color-table.vim'
+
+Plug 'plasticboy/vim-markdown'
+
+call plug#end()
 
 "============================================
 "                GENERAL
@@ -192,7 +251,7 @@ nnoremap <C-p> :Unite file_rec/async -start-insert<cr>
 nnoremap <space>/ :Unite grep:.<cr>
 nnoremap <space>s :Unite -quick-match -start-insert buffer<cr>
 nnoremap <space>b :Unite -start-insert buffer<cr>
-nnoremap <space>f :VimFiler -buffer-name=explorer 
+nnoremap <space>f :VimFiler -buffer-name=explorer
             \-split -simple -winwidth=30 -toggle -no-quit<cr>
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
