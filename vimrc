@@ -61,8 +61,6 @@ Plug 'plasticboy/vim-markdown'
 
 Plug 'godlygeek/tabular'
 
-Plug 'shime/vim-livedown'
-
 call plug#end()
 
 "============================================
@@ -172,15 +170,6 @@ let g:tagbar_width = 28
 let g:vimshell_prompt_expr =
 \ 'escape(fnamemodify(getcwd(), ":~").">", "\\[]()?! ")." "'
 let g:vimshell_prompt_pattern = '^\%(\f\|\\.\)\+> '
-
-" Should markdown preview get shown automatically upon opening markdown buffer
-let g:livedown_autorun = 0
-
-" should the browser window pop-up upon previewing
-let g:livedown_open = 0
-
-" the port on which Livedown server will run
-let g:livedown_port = 1337
 
 " Fugitive leader/command shortcuts
 nmap <leader>gl :Git log --pretty="format:\%Cgreen\%h\%Creset \%an - \%s" --graph<CR>
