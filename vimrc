@@ -3,7 +3,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --omnisharp-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --omnisharp-completer --system-libclang' }
 
 Plug 'junegunn/vim-github-dashboard'
 
@@ -45,7 +45,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'terryma/vim-multiple-cursors'
 
-Plug 'Shougo/vimproc.vim'
+Plug 'Shougo/vimproc.vim', {'do': 'make'}
 
 Plug 'Dissonant-Tech/vim-searchdestroy'
 
@@ -58,6 +58,10 @@ Plug 'sukima/xmledit'
 Plug 'guns/xterm-color-table.vim'
 
 Plug 'plasticboy/vim-markdown'
+
+Plug 'godlygeek/tabular'
+
+Plug 'shime/vim-livedown'
 
 call plug#end()
 
@@ -169,6 +173,14 @@ let g:vimshell_prompt_expr =
 \ 'escape(fnamemodify(getcwd(), ":~").">", "\\[]()?! ")." "'
 let g:vimshell_prompt_pattern = '^\%(\f\|\\.\)\+> '
 
+" Should markdown preview get shown automatically upon opening markdown buffer
+let g:livedown_autorun = 0
+
+" should the browser window pop-up upon previewing
+let g:livedown_open = 0
+
+" the port on which Livedown server will run
+let g:livedown_port = 1337
 
 " Fugitive leader/command shortcuts
 nmap <leader>gl :Git log --pretty="format:\%Cgreen\%h\%Creset \%an - \%s" --graph<CR>
