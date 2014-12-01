@@ -236,9 +236,12 @@ autocmd FileType html set ft=htmldjango
 autocmd FileType html set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType htmldjango set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
-" indent all html tags
+" Indent all html tags
 autocmd FileType html let g:html_indent_inctags = "html,body,head,tbody"
 autocmd FileType htmldjango let g:html_indent_inctags = "html,body,head,tbody"
+
+" Disable auto-folding of Markdown files
+autocmd FileType mkd set foldenable!
 
 autocmd! BufRead,BufNewFile,BufEnter *.{c,cpp,h,java,javascript} call CSyntaxAfter()
 
