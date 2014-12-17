@@ -61,6 +61,8 @@ Plug 'plasticboy/vim-markdown'
 
 Plug 'godlygeek/tabular'
 
+Plug 'Wolfy87/vim-enmasse'
+
 call plug#end()
 
 "============================================
