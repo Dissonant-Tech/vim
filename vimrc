@@ -63,6 +63,8 @@ Plug 'godlygeek/tabular'
 
 Plug 'Wolfy87/vim-enmasse'
 
+Plug 'idanarye/vim-vebugger'
+
 call plug#end()
 
 "============================================
