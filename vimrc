@@ -291,7 +291,8 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ '.git5_specs/',
       \ '.pyc',
       \ '.class',
-      \ 'build/intermediates/',
+      \ 'build/',
+      \ 'bin/',
       \ ], '\|'))
 
 " Vim-airline
