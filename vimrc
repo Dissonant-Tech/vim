@@ -71,6 +71,7 @@ call plug#end()
 "                GENERAL
 "============================================
 
+
 set nocompatible        " Set fist, as this option affects others
 set tabstop=4
 set shiftwidth=4
@@ -299,7 +300,7 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = "luna"
+let g:airline_theme = "wombat"
 
 " YCM setup
 let g:ycm_collect_identifiers_from_tags_files = 0
