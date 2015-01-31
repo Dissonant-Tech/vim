@@ -1,3 +1,9 @@
+
+" Neovim checks
+if has('nvim')
+runtime! python_setup.vim
+endif
+
 " Load Plugins
 call plug#begin('~/.vim/plugged')
 
@@ -86,6 +92,9 @@ set nuw=1               " Make numberline as small as possible
 set autoindent
 set nocp
 set et
+set helpheight=20       " Minimal initial height of the help window
+
+set colorcolumn=81
 
 set backspace=2
 set encoding=utf-8
@@ -251,6 +260,9 @@ autocmd FileType html let g:html_indent_inctags = "html,body,head,tbody"
 autocmd FileType htmldjango let g:html_indent_inctags = "html,body,head,tbody"
 
 autocmd! BufRead,BufNewFile,BufEnter *.{c,cpp,h,java,javascript} call CSyntaxAfter()
+
+" Java keymaps
+autocmd FileType java nmap <F5><F5> :ProjectRefresh
 
 "============================================
 "                 UNITE

@@ -102,5 +102,6 @@ hi! link Package Normal
 hi! link FoldColumn		Folded
 hi! link CursorColumn	CursorLine
 hi! link NonText		LineNr
+hi ColorColumn		ctermbg=235		cterm=none		guibg=#303030	gui=none
 
 " vim:set ts=4 sw=4 noet:
