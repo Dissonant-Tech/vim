@@ -5,3 +5,4 @@ swap/*
 backup/*
 plugged
 .netrwhist
+.tags
